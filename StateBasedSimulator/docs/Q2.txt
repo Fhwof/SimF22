@@ -1,0 +1,57 @@
+########## Q2a ##########
+The odds that the other coin flip results in tails is 0.25
+
+From the simulator:
+    The mean is about 0.25
+    The confint is about (0.24989, 0.25006)
+
+
+Based on theoretical possibe outcomes:
+
+    1st     2nd
+    flip    flip
+
+            Heads 1/4 chance 
+    Heads
+            Tails 1/4 chance 
+
+
+
+            Heads 1/4 chance
+    Tails
+            Tails 1/4 chance
+
+The only possible outcome is Heads -> Tails which is 1 in 4 possible outcomes.
+Therefore: 1/4 = 0.25 chance
+
+
+########## Q2b ##########
+The odds that the other coin flip results in tails is 0.50
+
+From the simulator:
+    The mean is about 0.50
+    The confint is about (0.49989, 0.50009)
+
+Based on theoretical possibe outcomes:
+
+    1st     2nd
+    flip    flip
+
+            Heads 1/4 chance 
+    Heads
+            Tails 1/4 chance 
+
+
+
+            Heads 1/4 chance
+    Tails
+            Tails 1/4 chance
+
+This time we only know that there is one heads and one tails, but we don't know which
+is first, so the possible outcomes are Heads -> Tails and Tails -> Heads.
+Each of those outcomes have 1/4 chance so we add them together for 1/2 = 0.50
+
+########## where they different? ##########
+The two systems are different because the first model only has one possible outcome
+while the second one has two possible outcomes, causing the probability to increase.
+Looking at my results above you can see that my simulator confirmed this.

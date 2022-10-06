@@ -1,6 +1,6 @@
 include("../../../deps/build.jl")
 
-dicediff = SidesDiff(6, 6)
+dicediff = SidesDiff(5, 5)
 
 results = repeat(dicediff, 1000000, StoredValues)
 calcDiff(results)
