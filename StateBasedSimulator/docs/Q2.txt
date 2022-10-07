@@ -51,7 +51,8 @@ This time we only know that there is one heads and one tails, but we don't know 
 is first, so the possible outcomes are Heads -> Tails and Tails -> Heads.
 Each of those outcomes have 1/4 chance so we add them together for 1/2 = 0.50
 
-########## where they different? ##########
+########## were they different? ##########
 The two systems are different because the first model only has one possible outcome
-while the second one has two possible outcomes, causing the probability to increase.
+while the second one has two possible outcomes, causing the probability to increase
+from 1/4 to 1/2.
 Looking at my results above you can see that my simulator confirmed this.

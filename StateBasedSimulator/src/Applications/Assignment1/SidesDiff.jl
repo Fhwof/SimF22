@@ -1,4 +1,7 @@
-
+#This simulator is very similar to DiceDiff, but 
+#the sim struct needed attributes to keep track
+#of the number of sides on each die, along with
+#some logic to incorporate it.
 
 struct SidesDiff <: MonteCarloSim
     dieSide::Int

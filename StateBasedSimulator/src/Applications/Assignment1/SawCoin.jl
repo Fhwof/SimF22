@@ -1,4 +1,22 @@
+#I based the foundation of this simulator from how the
+#drunkards walk sim was built.
+#the drunkards walk sim was seperated into 6
+#different files, so first I made sections
+#of my code dedicated to what each file did.
+#some files (like verbose) I didn't use, and
+#some files (like the state/sim definitions)
+#I combined into one section.
 
+#This simulation checks the odds that in two
+#coin flips, it landed on both heads and tails.
+#This is a small but important difference from
+#part a.
+
+#Although the case of having two tail flips is
+#impossible for the situation given in the question,
+#those cases must be taken into account for the
+#total coin flips to get proper odds. I only count
+#tail flips if their was also a head flip.
 
 #---------- sim/state definition ----------
 

@@ -1,0 +1,32 @@
+########## Q3a ##########
+from the simulator:
+
+    chance of at least 2 packs ~ 1.000
+    chance of at least 3 packs ~ 0.500
+    chance of at least 4 packs ~ 0.250
+    chance of at least 5 packs ~ 0.125
+
+
+########## Q3b ##########
+from the simulator:
+
+    chance of exactly 2 packs ~ 0.500
+    chance of exactly 3 packs ~ 0.250
+    chance of exactly 4 packs ~ 0.125
+    chance of exactly 5 packs ~ 0.062
+
+
+########## Q3c ##########
+
+From the simulator the average amount of packs needed is about 3
+
+Here's 5 confidence intervals:
+(2.993811575953459, 3.0114284240465405)
+(2.9819687082231217, 2.9993712917768787)
+(2.9820509568648372, 2.9994490431351624)
+(2.989266434514178, 3.006713565485822)
+(2.9954888373772866, 3.0130311626227133)
+
+I find it interesting that some of the confidence intervals are
+below 3. This suggests that the average amount of packs needed
+is really a number slightly less than 3.

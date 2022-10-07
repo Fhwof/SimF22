@@ -1,6 +1,0 @@
-Some average differences from the simulator:
-    (6, 6) ~ 1.94
-    (5, 5) ~ 1.60  (using similar math from Q1a.txt this is confirmed)
-    (4, 8) ~ 2.62
-
-

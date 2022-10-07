@@ -1,3 +1,18 @@
+#I based the foundation of this simulator from how the
+#drunkards walk sim was built.
+#the drunkards walk sim was seperated into 6
+#different files, so first I made sections
+#of my code dedicated to what each file did.
+#some files (like verbose) I didn't use, and
+#some files (like the state/sim definitions)
+#I combined into one section.
+
+#I needed to add perameters to choose between finding the
+#odds of At Least N card packs vs Exactly N card packs
+#and to find the average number of card packs bought.
+#I found paremeters to be easier to implement than
+#multiple dispatching.
+
 #---------- sim/state definition ----------
 
 struct SpecialCardSim <: StateSim end
@@ -7,12 +22,6 @@ mutable struct SpecialCardState <: State
     numGold::Int
     numPacks::Int
 end
-
-
-# function SpecialCardSim(sim::SpecialCardSim,  m = :AtLeast)
-    
-# end
-
 
 #---------- runsim ----------
 
