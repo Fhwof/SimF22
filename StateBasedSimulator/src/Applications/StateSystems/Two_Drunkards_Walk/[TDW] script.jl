@@ -1,4 +1,4 @@
-include("../../../../../StateBasedSimulator/deps/build.jl")        # load simulator - works in VS Code using shift-enter
+include("../../../../deps/build.jl")        # load simulator - works in VS Code using shift-enter
 
 dw = DrunkardsWalkSim(walls = 10)           # :steps is the default measure
 

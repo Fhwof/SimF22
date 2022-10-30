@@ -67,7 +67,7 @@ rand() < 0.3
 rand(Bernoulli(0.3))
 rand(Bernoulli(0.3), 7)
 
-rand(Geometric(2/5))
+rand(Geometric(2/15))
 rand(Geometric(2/5), 7)
 
 rand(Exponential(5/2))

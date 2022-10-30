@@ -3,6 +3,7 @@ mc_path          = app_path * "MonteCarloSystems/"
 state_path       = app_path * "StateSystems/"
 fixedevents_path = app_path * "FixedEventsSystems/"
 A1_path          = app_path * "Assignment1/"
+A2_path          = app_path * "Assignment2/"
 
 # Assignment 1
 include(A1_path * "DiceDiff.jl")
@@ -10,6 +11,10 @@ include(A1_path * "SidesDiff.jl")
 include(A1_path * "SawFirstCoin.jl")
 include(A1_path * "SawCoin.jl")
 include(A1_path * "SpecialCard.jl")
+
+#Assignment 2
+include(A2_path * "GoldCard.jl")
+include(A2_path * "NormSim.jl")
 
 # Computing PI
 PI_path = mc_path * "Computing_PI/"
