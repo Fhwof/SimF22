@@ -15,6 +15,7 @@ include(A1_path * "SpecialCard.jl")
 #Assignment 2
 include(A2_path * "GoldCard.jl")
 include(A2_path * "NormSim.jl")
+include(A2_path * "ExpSim.jl")
 
 # Computing PI
 PI_path = mc_path * "Computing_PI/"
