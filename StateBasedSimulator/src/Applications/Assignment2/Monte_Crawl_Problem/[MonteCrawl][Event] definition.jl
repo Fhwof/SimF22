@@ -5,4 +5,4 @@ struct Choice1 <: Event end
 struct Reveal  <: Event end
 struct Choice2 <: Event end
 
-EventList(sim::MonteHall) = EventList(Choice1, Reveal, Choice2)
+EventList(sim::MonteCrawl) = EventList(Choice1, Reveal, Choice2)

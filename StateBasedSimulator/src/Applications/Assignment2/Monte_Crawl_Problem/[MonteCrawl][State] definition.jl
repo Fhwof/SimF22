@@ -11,4 +11,4 @@ prize(d::Doors)    = d.prize
 chosen(d::Doors)   = d.chosen
 revealed(d::Doors) = d.revealed
 
-StartState(sim::MonteHall) = Doors(randomdoor())
+StartState(sim::MonteCrawl) = Doors(randomdoor())

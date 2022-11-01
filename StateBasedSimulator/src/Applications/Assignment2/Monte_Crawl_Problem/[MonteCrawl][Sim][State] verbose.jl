@@ -4,5 +4,5 @@ function show(d::Doors)
     println("  reveal = ", revealed(d) > 0 ? revealed(d) : "<<not set>>")
 end
 
-verbose_withlinenum(sim::MonteHall) = false
-verbose_splitstate(sim::MonteHall) = true
+verbose_withlinenum(sim::MonteCrawl) = false
+verbose_splitstate(sim::MonteCrawl) = true

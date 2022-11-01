@@ -6,15 +6,16 @@ abstract type Strategy end
 struct Switch <: Strategy end
 struct Stay <: Strategy end
 struct DoesntMatter <: Strategy end
+struct Door3 <: Strategy end
 
 # Simulation type definition
-struct MonteHall <: DiscreteEventSim
+struct MonteCrawl <: DiscreteEventSim
     strategy::Strategy
 end
 
 # constructor
-MonteHall(Strategy::Type) = MonteHall( Strategy())
+MonteCrawl(Strategy::Type) = MonteCrawl( Strategy())
 
 # accessor
-strategy(sim::MonteHall) = sim.strategy
+strategy(sim::MonteCrawl) = sim.strategy
 
