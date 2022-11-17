@@ -1,0 +1,23 @@
+# Interfaces
+
+# Monte Carlo Simulations
+SimName <: MonteCarloSim
+nextvalue(sim::Simulation)
+
+Results                           # can use built-in or user defined
+repeat(sim, ResultType, count)
+
+# Descrete State Simulations
+SimName <: DiscreteStateSim
+StateName <: State
+startstate(sim)::State
+update!(sim, state, event)
+
+EventTypes <: Events             # [optional] use if events drive your system; declare a different event type for each type of event used
+eventslist(sim)                  # [optional] use if events drive your system; must be iterable
+maxitr(sim)                     # [optional] use if events/goals don't apply or are unbounded
+found(state)                     # [optional] for goal-driven simulations
+measure(state)                   # [optional] if not used, state is returned after every sim run
+
+Results                          # can use built-in or user defined
+repeat(sim, ResultType, count)
