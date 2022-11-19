@@ -1,63 +1,91 @@
-###########################################################################
-#  Single Server System
-###########################################################################
-# -------------  [State]  -------------
-#  queue::Int
-#  busy::Bool
-# -------------  [Stats]  -------------
-#  N::Int
-#  NW::Int
-#  WQ::Time
-#  WS::Time
-#  T_idle::Time                             
-#  Tmax::Time               (Const)
-#  IAT::Time
-#  iatime::Time
-#  stime::Time
-###########################################################################
-
-# -----------------------  [setup simulator]  --------------------------- #
 include("../../../deps/build.jl")
 
+# ---------- 1.c) ----------
+numRepeats = 100
 
-#testing
-n = 10000
-uniTotal = 0
-expTotal = 0
-for i in 1:n
-    uniTotal += rand(1:8)
-    expTotal += rand(Exponential(4.5))
-end
-println(uniTotal/n)
-println(expTotal/n)
-
+#set up and run the simple system
 servicetime(sim::SingleServerSystem)      = rand(3:12)
 interarrivaltime(sim::SingleServerSystem) = rand(1:8)
+simpleSim = SingleServerSystem(end_time = 100)
+simpleResults = repeat(simpleSim, numRepeats)
+simpleWQ = simpleResults[:WQ]
+simpleMean = mean(simpleWQ)
+simpleSTD = std(simpleWQ)
+simpleConfint = confint(simpleWQ, level = 0.99)
 
-sim = SingleServerSystem(end_time = 100)
+#setup and run the realistic system
+servicetime(sim::SingleServerSystem)      = round(Int, rand(Erlang(8, 0.9)))
+interarrivaltime(sim::SingleServerSystem) = round(Int, rand(Exponential(4.5)))
+realSim = SingleServerSystem(end_time = 100)
+realResults = repeat(realSim, numRepeats)
+realWQ = realResults[:WQ]
+realMean = mean(realWQ)
+realSTD = std(realWQ)
+realConfint = confint(realWQ, level = 0.99)
 
-# -------------------------  [verbose run]  ----------------------------- #
-runsim(sim, verbose = true)
+#comparisons
+WQFtest = ftest(simpleWQ, realWQ)
+WQTtest = ttest(simpleWQ, realWQ, equalVar = false)
 
-# ----------------------  [run the simulator]  -------------------------- #
-# results = repeat(sim, 30; busy = Skip, queue = Skip, Tmax = Const);
-results = repeat(sim, 30);
+println("the mean of the total wait time in the simple sim was: $simpleMean")
+println("the mean of the total wait time in the realistic sim was: $realMean")
+println()
+println("the standard deviation of the total wait time in the simple sim was: $simpleSTD")
+println("the standard deviation of the total wait time in the realistic sim was: $realSTD")
+println()
+println("the 99% confidence interval of the total wait time in the simple sim was: $simpleConfint")
+println("the 99% confidence interval of the total wait time in the realistic sim was: $realConfint")
+println()
+println("the F test of the simple and real systems yielded: $WQFtest")
+println("the Welch T test of the simple and real systems yielded: $WQTtest")
 
-# ------------------------  [perform stats]  ---------------------------- #
-stat_WQ = results[:WQ]
-mean(stat_WQ)
-var(stat_WQ)
+# ---------- 1.d) ----------
+numRepeats = 5000
 
-t_idle = results[:T_idle];
-mean(t_idle)
-confint(t_idle)
+#set up and run the simple system
+servicetime(sim::SingleServerSystem)      = rand(3:12)
+interarrivaltime(sim::SingleServerSystem) = rand(1:8)
+simpleSim = SingleServerSystem(end_time = 100)
+simpleResults = repeat(simpleSim, numRepeats)
+simpleWQ = simpleResults[:WQ]
+simpleMean = mean(simpleWQ)
+simpleSTD = std(simpleWQ)
 
+#setup and run the realistic system
+servicetime(sim::SingleServerSystem)      = round(Int, rand(Erlang(8, 0.9)))
+interarrivaltime(sim::SingleServerSystem) = round(Int, rand(Exponential(4.5)))
+realSim = SingleServerSystem(end_time = 100)
+realResults = repeat(realSim, numRepeats)
+realWQ = realResults[:WQ]
+realMean = mean(realWQ)
+realSTD = std(realWQ)
 
-results[Const, :Tmax]
+#comparisons
+WQFtest = ftest(simpleWQ, realWQ)
+WQTtest = ttest(simpleWQ, realWQ, equalVar = false)
 
-results[:WQ]
-results[NormalStats, :WQ]
+println("the F test of the simple and real systems after $numRepeats simulations yielded: $WQFtest")
+println("the Welch T test of the simple and real systems after $numRepeats simulations yielded: $WQTtest")
 
-stat_WQ = results[NormalStats, :WQ]
-mean(stat_WQ)
-var(stat_WQ)
+# #this code was used to verify 1. a) calculations
+# n = 10000
+# uniTotal = 0
+# expTotal = 0
+# for i in 1:n
+#     uniTotal += rand(1:8)
+#     expTotal += rand(Exponential(4.5))
+# end
+# println(uniTotal/n)
+# println(expTotal/n)
+
+# #this code was used to verify 1. b) calculations
+# # rand(Erlang(375, 1/50)) is the function I found accidentally that will have the same mean as rand(3:12) 
+# n = 10000
+# uniTotal = 0
+# erlTotal = 0
+# for i in 1:n
+#     uniTotal += rand(3:12)
+#     erlTotal += round(Int, rand(Erlang(8, 0.9)))
+# end
+# println(uniTotal/n)
+# println(erlTotal/n)
